@@ -37,7 +37,7 @@ It is a syntax error if a regular expression's body text contains a _LineTermina
 
 I believe these syntax changes are safe and strictly additive, in two senses:
 
-1. Line terminators within regex literals are currently syntax errors (with ECMAScript implementations being explicitly [forbidden](https://tc39.github.io/ecma262/#sec-literals-regular-expression-literals) from changing this). Changing this can however cause _invalid_ code to take longer to reach a parse error (e.g. a single unmatched `/` that extends until the end of the program, or a matched pair that doesn't specify the `x` flag).
+1. Line terminators within regex literals are currently syntax errors (with ECMAScript implementations being explicitly [forbidden](https://tc39.github.io/ecma262/#sec-literals-regular-expression-literals) from changing this). Changing this can however cause _invalid_ code to take longer to reach a parse error (e.g. a single unmatched `/` that extends until the end of the program, or a matched pair across lines that doesn't specify the `x` flag).
 2. To my knowledge, there is no potential for conflict with the `/` operator in well-formed code, because binary operators and regular expresion literals cannot appear in the same syntactic positions.
 
 ## Semantics
