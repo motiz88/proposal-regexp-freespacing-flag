@@ -53,8 +53,8 @@ See more at http://xregexp.com/flags/#extended.
 * As mentioned previously, XRegExp is a popular user-space solution that works today. The drawbacks of a user-space-only solution are discussed in the [Motivation](#motivation) section.
 * Arguments could be made for deviating from XRegExp's `x` syntax in various ways, for example supporting embedded `//` and `/* ... */` comments instead of the current `#`. Counterarguments would include:
 	* Added complexity - for example, practically anything to do with `/` would risk changing the meaning of existing programs;
-	* Fragmentation relative to the established solution
-	* The fact that regular expressions already form their own distinct syntax within the language.
+	* Fragmentation relative to the established solution;
+	* The fact that regular expressions already form their own distinct syntax within the language, so a different syntax for comments in regex is somewhat justifiable.
 * There is prior art ([\[1\]](http://2ality.com/2017/07/re-template-tag.html), [\[2\]](http://lea.verou.me/2018/06/easy-dynamic-regular-expressions-with-tagged-template-literals-and-proxies/), probably more) for using tagged template literals as an alternative to regular expression literals. Template literals already accommodate line breaks, and so can be used to achieve something similar without any changes to the ECMAScript grammar. Problems with this as a standard feature include:
 	* Embedded expressions introduce dynamism, which can tempt authors to write less-performant code;
 	* The question of whether embedded strings should get auto-escaped (vs being treated as raw regex snippets) adds complexity and can cause confusion;
