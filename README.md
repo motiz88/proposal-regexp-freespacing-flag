@@ -59,3 +59,7 @@ See more at http://xregexp.com/flags/#extended.
 	* Embedded expressions introduce dynamism, which can tempt authors to write less-performant code;
 	* The question of whether embedded strings should get auto-escaped (vs being treated as raw regex snippets) adds complexity and can cause confusion;
 	* It's also probably a reasonable expectation that new regex features _have_ counterparts in the literal syntax, unless we take the more extreme step of deprecating regex literals outright.
+
+## Implementations
+
+* I've put together a proof-of-concept implementation for Babel. The code is available in the [`freespacing-regex` branch](https://github.com/babel/babel/compare/master...motiz88:freespacing-regex) of my fork of Babel.
