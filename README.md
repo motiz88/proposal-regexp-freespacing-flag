@@ -43,7 +43,7 @@ I believe these syntax changes are safe and strictly additive, in two senses:
 
 ## Semantics
 
-Patterns with the `x` flag are to be interpreted exactly as XRegExp interprets them:
+Patterns with the `x` flag are to be interpreted exactly as XRegExp interprets them with respect to whitespace and `#` (but none of the other XRegExp extensions):
 
 > This flag has two complementary effects. First, it causes most whitespace to be ignored, so you can free-format the regex pattern for readability. Second, it allows comments with a leading `#`. Specifically, it turns most whitespace into an "ignore me" metacharacter, and `#` into an "ignore me, and everything else up to the next newline" metacharacter. They aren't taken as metacharacters within character classes (which means that classes are not free-format, even with `x`), and as with other metacharacters, you can escape whitespace and `#` that you want to be taken literally. Of course, you can always use `\s` to match whitespace.
 
@@ -60,6 +60,13 @@ See more at http://xregexp.com/flags/#extended.
 	* Embedded expressions introduce dynamism, which can tempt authors to write less-performant code;
 	* The question of whether embedded strings should get auto-escaped (vs being treated as raw regex snippets) adds complexity and can cause confusion;
 	* It's also probably a reasonable expectation that new regex features _have_ counterparts in the literal syntax, unless we take the more extreme step of deprecating regex literals outright.
+*
+  We could _broaden_ the scope of this proposal in various ways, for example:
+  * Bringing other extended regex formatting features to the language: [leading mode modifiers](http://xregexp.com/syntax/#modeModifier) (relevant to the problem of the flags only being known at the end of a literal), [inline comments](http://xregexp.com/syntax/#inlineComments), etc.
+  * Allowing newlines to occur in all regex literals, without requiring the `x` flag.
+  
+  This work can be done in separate proposals.
+* If we supported leading mode modifiers, we could require a regex literal with line breaks to begin with `/(?x)`, avoiding the need to speculatively scan through line breaks in the non-`x` case. However, as long as we frame `x` as being a modifier, we would probably still want to support trailing `/x` for completeness / least surprise.
 
 ## Implementations
 
