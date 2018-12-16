@@ -11,13 +11,14 @@ This is a proposal to add the `/x` flag to ECMAScript regular expressions, enabl
 
 Regular expressions are useful<sup>\[citation needed\]</sup>. Used correctly, they provide a succinct and performant method of working with string inputs. _Complex_ regular expressions are also useful, but they have a readability problem that gets worse the longer they get. This can make code that uses them harder to maintain.
 
-User-space solutions are possible; one notable library in this space is [XRegExp](http://xregexp.com/) with its Perl-inspired [`x` flag](http://xregexp.com/flags/#extended). However, runtime and code size concerns can dissuade people from adding a library to their programs to provide what is essentially a "developer convenience" feature.
+User-space solutions are possible; one notable library in this space is [XRegExp](http://xregexp.com/) with its Perl-inspired [`x` flag](http://xregexp.com/flags/#extended) that allows whitespace and comments to be used for formatting regex patterns. However, runtime and code size concerns can dissuade people from adding a library to their programs to provide what is essentially a "developer convenience" feature.
 
-Moreover, without language-level support, it is harder and less sound to build tooling around free-spaced regular expressions. Examples of potentially-useful tooling include:
+Moreover, without language-level support, it is harder and less sound to build tooling around extended regular expression syntaxes (and such tooling is less shareable if it is built). Examples of potentially-useful tooling include:
 
 * Syntax highlighting;
 * A lint rule that enforces a complexity limit for single-line patterns, with free-spaced patterns as the recommended alternative;
-* A code formatter that rewrites single-line patterns into free-spaced patterns automatically, and manages spacing and indentation within free-spaced patterns for consistency.
+* A code formatter that rewrites single-line patterns into free-spaced patterns automatically, and manages spacing and indentation within free-spaced patterns for consistency;
+* A minifier that strips whitespace and comments from free-spaced patterns.
 
 ## Syntax
 
