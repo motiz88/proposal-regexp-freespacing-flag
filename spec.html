@@ -124,3 +124,15 @@ contributors: Moti Zilberman
     1. Return *false*.
   </emu-alg>
 </emu-clause>
+<hr>
+
+<p>The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-literals-regular-expression-literals">11.8.5 Regular Expression Literals</a> is modified as follows.</p>
+<emu-clause id="sec-literals-regular-expression-literals">
+  <h1>Regular Expression Literals</h1>
+  <h2>Syntax</h2>
+  <emu-grammar type="definition">
+    RegularExpressionNonTerminator ::
+      <del>SourceCharacter but not LineTerminator</del>
+      <ins>SourceCharacter</ins>
+  </emu-grammar>
+</emu-clause>
